@@ -10,12 +10,6 @@
         <constructor-arg index="1" value="John Smith"/>
     </bean>
 
-    <bean id="consoleEventLogger" class="com.epam.spring.loggers.ConsoleEventLogger"/>
-
-    <bean id="fileEventLogger" class="com.epam.spring.loggers.FileEventLogger" init-method="init">
-        <constructor-arg value="src/main/resources/log.log"/>
-    </bean>
-
     <bean id="event" class="com.epam.spring.beans.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
@@ -25,9 +19,11 @@
 
     <bean id="app" class="com.epam.spring.App">
         <constructor-arg index="0" ref="client"/>
-        <constructor-arg index="1" ref="fileEventLogger"/>
+        <constructor-arg index="1" ref="cacheFileEventLogger"/>
     </bean>
 
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+    <import resource="loggers.xml"/>
 
 </beans>
