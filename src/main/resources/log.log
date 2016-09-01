@@ -2,3 +2,8 @@ Event{id=1, message='Some event for user John Smith', date=Jul 29, 2016 6:42:17 
 Event{id=2, message='Some event for user 2', date=Jul 29, 2016 6:42:17 PM}
 Event{id=1, message='Some event for user John Smith', date=Aug 23, 2016 4:49:35 PM}
 Event{id=2, message='Some event for user 2', date=Aug 23, 2016 4:49:35 PM}
+Event{id=1, message='Some event for user John Smith', date=Sep 1, 2016 7:32:00 PM}
+Event{id=2, message='Some event for user 2', date=Sep 1, 2016 7:32:00 PM}
+Event{id=1, message='Some event for user John Smith', date=Sep 1, 2016 7:33:04 PM}
+Event{id=2, message='Some event for user 2', date=Sep 1, 2016 7:33:04 PM}
+Event{id=1, message='Some event for user John Smith', date=Sep 1, 2016 7:47:51 PM}

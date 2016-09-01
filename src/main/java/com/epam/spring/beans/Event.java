@@ -20,6 +20,14 @@ public class Event {
         this.dateFormat = dateFormat;
     }
 
+    public static boolean isDay() {
+        if (new Date().getHours() > 8 && new Date().getHours() < 17) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String getMessage() {
         return message;
     }

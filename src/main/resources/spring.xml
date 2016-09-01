@@ -17,7 +17,7 @@
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
-        <property name="systemPropertiesMode" value="override"/>
+        <!--<property name="systemPropertiesMode" value="override"/>-->
     </bean>
 
     <bean id="client" class="com.epam.spring.beans.Client"
@@ -30,13 +30,14 @@
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>
-        <constructor-arg index="1" ref="dateFormat"/>
+        <!--<constructor-arg index="1" ref="dateFormat"/>-->
+        <constructor-arg index="1" value="#{T(java.text.DateFormat).getDateTimeInstance()}"/>
     </bean>
 
     <bean id="app" class="com.epam.spring.App"
           c:client-ref="client"
           c:loggerMap-ref="loggerMap"
-          c:defaultLogger-ref="cacheFileEventLogger">
+          c:defaultLogger="#{T(com.epam.spring.beans.Event).isDay()?fileEventLogger:consoleEventLogger}">
     </bean>
 
     <util:map id="loggerMap">
@@ -44,7 +45,7 @@
         <entry key="ERROR" value-ref="combinedEventLogger"/>
     </util:map>
 
-    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+    <!--<bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>-->
 
     <import resource="loggers.xml"/>
 
