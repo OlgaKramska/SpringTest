@@ -7,3 +7,9 @@ Event{id=2, message='Some event for user 2', date=Sep 1, 2016 7:32:00 PM}
 Event{id=1, message='Some event for user John Smith', date=Sep 1, 2016 7:33:04 PM}
 Event{id=2, message='Some event for user 2', date=Sep 1, 2016 7:33:04 PM}
 Event{id=1, message='Some event for user John Smith', date=Sep 1, 2016 7:47:51 PM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:15:33 AM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:23:34 AM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:23:55 AM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:24:52 AM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:38:43 AM}
+Event{id=2, message='Some event for user 2', date=Sep 26, 2016 12:39:52 AM}

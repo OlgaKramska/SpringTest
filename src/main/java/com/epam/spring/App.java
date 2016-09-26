@@ -5,8 +5,10 @@ import com.epam.spring.beans.Event;
 import com.epam.spring.loggers.ConsoleEventLogger;
 import com.epam.spring.loggers.EventLogger;
 import com.epam.spring.type.EventType;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Map;
 
@@ -25,7 +27,10 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new GenericXmlApplicationContext("spring.xml");
+//        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
+//        context.load("classpath:src/main/resources/spring.xml");
+//        context.refresh();
 
         App app = (App) context.getBean("app");
 
@@ -34,14 +39,14 @@ public class App {
         Event event2 = (Event) context.getBean("event");
         event2.setMessage("Some event for user 2");
 
-        app.logEvent(event1, "error");
-        app.logEvent(event2, "info");
-        app.logEvent(event2, "bla-bla");
+        app.logEvent2(event1, "error");
+        app.logEvent2(event2, "info");
+        app.logEvent2(event2, "bla-bla");
 
-        context.close();
+//        context.close();
     }
 
-    public void logEvent(Event event, String loggerType) {
+    public void logEvent2(Event event, String loggerType) {
         String message = event.getMessage().replaceAll(String.valueOf(client.getId()), client.getFullName());
         event.setMessage(message);
         EventLogger logger;
