@@ -14,5 +14,9 @@
         <constructor-arg index="1" ref="fileEventLogger"/>
     </bean>
 
-    <bean id="statistic" class="com.epam.spring.aspects.StatisticAspect"/>
+    <bean id="statistic" class="com.epam.spring.aspects.StatisticAspect">
+        <constructor-arg>
+            <bean class="java.util.HashMap"/>
+        </constructor-arg>
+    </bean>
 </beans>

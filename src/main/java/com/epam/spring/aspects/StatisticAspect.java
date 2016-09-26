@@ -14,6 +14,10 @@ import java.util.Map;
 public class StatisticAspect {
     private Map<Class<?>, Integer> counter;
 
+    public StatisticAspect(Map<Class<?>, Integer> counter) {
+        this.counter = counter;
+    }
+
     @Pointcut("execution(* *logEvent(..))")
     private void allLogEventMethods() {
     }
