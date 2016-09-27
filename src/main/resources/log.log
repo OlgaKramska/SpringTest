@@ -23,3 +23,8 @@ Event{id=1, message='Some event for user John Smith', date=Sep 27, 2016 10:19:32
 Event{id=1, message='Some event for user John Smith', date=Sep 27, 2016 10:20:59 AM}
 Event{id=2, message='Some event for user 2', date=Sep 27, 2016 10:20:59 AM}
 Event{id=1, message='Some event for user John Smith', date=Sep 27, 2016 10:48:41 AM}
+Event{id=1, message='Some event for user John Smith', date=Sep 27, 2016 12:37:48 PM}
+Event{id=1, message='Some event for user 1', date=Sep 27, 2016 12:42:19 PM}
+Event{id=4, message='null', date=Sep 27, 2016 12:42:19 PM}
+Event{id=1, message='Some event for user John Smith', date=Sep 27, 2016 12:42:50 PM}
+Event{id=4, message='Some event for user 4', date=Sep 27, 2016 12:42:50 PM}

@@ -1,14 +1,10 @@
 package com.epam.spring;
 
-import com.epam.spring.aspects.StatisticAspect;
 import com.epam.spring.beans.Client;
 import com.epam.spring.beans.Event;
-import com.epam.spring.loggers.ConsoleEventLogger;
 import com.epam.spring.loggers.EventLogger;
 import com.epam.spring.type.EventType;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Map;
@@ -39,7 +35,7 @@ public class App {
         Event event3 = context.getBean("event", Event.class);
         event3.setMessage("Some event for user 3");
         Event event4 = context.getBean("event", Event.class);
-        event3.setMessage("Some event for user 4");
+        event4.setMessage("Some event for user 4");
 
         app.logEvent(event1, "error");
         app.logEvent(event2, "info");

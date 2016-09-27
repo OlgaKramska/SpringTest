@@ -11,6 +11,7 @@
  		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
     <import resource="loggers.xml"/>
+    <import resource="aspects.xml"/>
 
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
