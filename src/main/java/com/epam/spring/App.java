@@ -1,5 +1,6 @@
 package com.epam.spring;
 
+import com.epam.spring.aspects.StatisticAspect;
 import com.epam.spring.beans.Client;
 import com.epam.spring.beans.Event;
 import com.epam.spring.loggers.ConsoleEventLogger;
@@ -28,25 +29,27 @@ public class App {
 
     public static void main(String[] args) {
         ApplicationContext context = new GenericXmlApplicationContext("spring.xml");
-//        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-//        context.load("classpath:src/main/resources/spring.xml");
-//        context.refresh();
 
-        App app = (App) context.getBean("app");
+        App app = context.getBean("app", App.class);
 
-        Event event1 = (Event) context.getBean("event");
+        Event event1 = context.getBean("event", Event.class);
         event1.setMessage("Some event for user 1");
-        Event event2 = (Event) context.getBean("event");
+        Event event2 = context.getBean("event", Event.class);
         event2.setMessage("Some event for user 2");
+        Event event3 = context.getBean("event", Event.class);
+        event3.setMessage("Some event for user 3");
+        Event event4 = context.getBean("event", Event.class);
+        event3.setMessage("Some event for user 4");
 
-        app.logEvent2(event1, "error");
-        app.logEvent2(event2, "info");
-        app.logEvent2(event2, "bla-bla");
+        app.logEvent(event1, "error");
+        app.logEvent(event2, "info");
+        app.logEvent(event3, "info");
+        app.logEvent(event4, "info");
 
-//        context.close();
+
     }
 
-    public void logEvent2(Event event, String loggerType) {
+    public void logEvent(Event event, String loggerType) {
         String message = event.getMessage().replaceAll(String.valueOf(client.getId()), client.getFullName());
         event.setMessage(message);
         EventLogger logger;

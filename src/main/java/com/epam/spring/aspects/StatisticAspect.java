@@ -1,5 +1,8 @@
 package com.epam.spring.aspects;
 
+import com.epam.spring.loggers.CombinedEventLogger;
+import com.epam.spring.loggers.ConsoleEventLogger;
+import com.epam.spring.loggers.FileEventLogger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,21 +19,24 @@ public class StatisticAspect {
 
     public StatisticAspect(Map<Class<?>, Integer> counter) {
         this.counter = counter;
+        counter.put(CombinedEventLogger.class, 0);
+        counter.put(FileEventLogger.class, 0);
+        counter.put(ConsoleEventLogger.class, 0);
     }
 
-    @Pointcut("execution(* *logEvent(..))")
+    @Pointcut("execution(* com.epam.spring.loggers.*.logEvent(..))")
     private void allLogEventMethods() {
     }
+
 
     @AfterReturning(pointcut = "allLogEventMethods()")
     public void count(JoinPoint joinPoint) {
         Class<?> loggerClass = joinPoint.getTarget().getClass();
-        if (counter == null) return;
-        if (!counter.containsKey(loggerClass)) {
-            counter.put(loggerClass, 1);
-        } else {
+//        if (!counter.containsKey(loggerClass)) {
+//            counter.put(loggerClass, 1);
+//        } else {
             counter.put(loggerClass, counter.get(loggerClass) + 1);
-        }
+//        }
     }
 
     public Map<Class<?>, Integer> getCounter() {

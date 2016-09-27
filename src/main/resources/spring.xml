@@ -39,7 +39,6 @@
           c:client-ref="client"
           c:loggerMap-ref="loggerMap"
           c:defaultLogger-ref="fileEventLogger">
-        <!--<aop:scoped-proxy proxy-target-class="false" />-->
     </bean>
 
     <util:map id="loggerMap">

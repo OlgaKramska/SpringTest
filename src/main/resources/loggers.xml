@@ -9,16 +9,12 @@
         <constructor-arg value="src/main/resources/log.log"/>
     </bean>
 
-    <bean id="cacheFileEventLogger" class="com.epam.spring.loggers.CacheFileEventLogger" parent="fileEventLogger"
-          destroy-method="destroy">
-        <constructor-arg value="10"/>
-    </bean>
 
     <bean id="combinedEventLogger" class="com.epam.spring.loggers.CombinedEventLogger">
         <constructor-arg>
             <list>
                 <ref bean="consoleEventLogger"/>
-                <ref bean="cacheFileEventLogger"/>
+                <ref bean="fileEventLogger"/>
             </list>
         </constructor-arg>
     </bean>

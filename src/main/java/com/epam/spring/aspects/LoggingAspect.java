@@ -27,12 +27,10 @@ public class LoggingAspect {
         this.otherLogger = otherLogger;
     }
 
-    @Pointcut("execution(* *logEvent(..))")
+    @Pointcut("execution(* com.epam.spring.loggers.*.logEvent(..))")
     private void allLogEventMethods() {
     }
 
-    @Pointcut("execution(* *File*Logger.init())")
-    private void initMethodInFileLogger(){}
 
     @Before("allLogEventMethods()")
     public void logBefore(JoinPoint joinPoint) {
@@ -40,15 +38,15 @@ public class LoggingAspect {
                 joinPoint.getSignature().getName());
     }
 
-    @AfterThrowing(pointcut = "initMethodInFileLogger()", throwing = "ex")
-    public void logAfterThrown(IOException ex){
-        System.out.println("Can't write to file");
-    }
+//    @AfterThrowing(pointcut = "allLogEventMethods()", throwing = "ex")
+//    public void logAfterThrown(IOException ex){
+//        System.out.println("Can't write to file");
+//    }
 
-    @Around("execution(* *ConsoleLogger.logEvent(..)) && args(event)")
+    @Around("execution(* com.epam.spring.loggers.ConsoleEventLogger.logEvent(..)) && args(event)")
     public void aroundConsoleLogging(ProceedingJoinPoint joinPoint, Event event) throws Throwable {
         int count = statisticAspect.getCounter().get(joinPoint.getTarget().getClass());
-        if(count < 10){
+        if(count < 3){
             joinPoint.proceed(new Object[]{event});
         } else {
            otherLogger.logEvent(event);
